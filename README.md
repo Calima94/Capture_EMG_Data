@@ -21,7 +21,9 @@ Após ser capturado uma das categorias com a quantidade de amostras especificada
 Após todas as categorias serem treinadas a janela de exibição da captura das amostras se encerará e o programa salvará automaticamente.
 
 *Selecionando 2 categorias o algoritmo identificará (180° como categoria 1 e 90° como categoria 2)
+
 ** Selecionando 3 categorias o algoritmo identificará (180° como categoria 1 e 90° como categoria 2, 60° como categoria 3)
+
 *** Selecionando 4 categorias o algoritmo identificará (180° como categoria 1 e 90° como categoria 2, 60° como categoria 3, 45° como categoria 4)
 
 
