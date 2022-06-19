@@ -1,6 +1,6 @@
 # Capture_EMG_Data
 
-## Manual de Utilização
+## Modo de Utilização
 
 Execute o arquivo main.py enquanto usa o bracelete "Myo" com o adaptador "bluetooth" conectado em uma porta USB de seu computador.
 
