@@ -469,7 +469,7 @@ def main(args=None):
             actual_list_of_angles = list_of_angles
             cap = cv2.VideoCapture(0)  # Image Source
             fourcc = cv2.VideoWriter_fourcc(*'DIVX')  # Video File
-            out = cv2.VideoWriter('test_2_05.avi', fourcc, 20.0, (640, 480))  # Video format
+            out = cv2.VideoWriter('Videos/test_2_05.avi', fourcc, 20.0, (640, 480))  # Video format
             count = 0
             dir_ = 0
             select_arm = "right"
@@ -585,7 +585,7 @@ def write_file(args=None):
                 df = pd.DataFrame(Emg_total)
                 df.columns = ['time', 'chanel1', 'chanel2', 'chanel3', 'chanel4', 'chanel5', 'chanel6', 'chanel7',
                               'chanel8', 'position']
-                df.to_csv("train_with_openCV_list_16_05.csv")
+                df.to_csv("EMG_Data/train_with_openCV_list_16_05.csv")
                 Emg_total = []
                 break
     except KeyboardInterrupt:
