@@ -10,7 +10,7 @@ Em seguida digite a quantidade de amostras por categoria que você deseja captur
 
 Logo após selecione o número de categorias que você deseja classificar, conjuntamente com a variância de ângulo que será aceito para um ângulo
 
-ser pertencente a determinada categoria. (Evite o uso de variâncias que sobrepunham as categorias, elas podem causar erros nas classificações futuras).
+ser pertencente a determinada categoria. (Evite o uso de variâncias que sobrepunham as categorias, elas podem causar erros nas classificações futuras)* ** ***.
 
 Click no botão Start.
 
@@ -19,6 +19,10 @@ Quando o ângulo estiver sendo capturado as linhas do braço do utilizador ficar
 Após ser capturado uma das categorias com a quantidade de amostras especificadas elas apareceram em verde.
 
 Após todas as categorias serem treinadas a janela de exibição da captura das amostras se encerará e o programa salvará automaticamente.
+
+*Selecionando 2 categorias o algoritmo identificará (180° como categoria 1 e 90° como categoria 2)
+** Selecionando 3 categorias o algoritmo identificará (180° como categoria 1 e 90° como categoria 2, 60° como categoria 3)
+*** Selecionando 4 categorias o algoritmo identificará (180° como categoria 1 e 90° como categoria 2, 60° como categoria 3, 45° como categoria 4)
 
 
 ## Requisitos e cuidados na execução do programa
