@@ -3,7 +3,7 @@
 ## Sobre o projeto
 
 Este projeto foi desenvolvido de forma a facilitar a captura de categorias pré-definidas do ângulo de cotovelo pelo usuário, utilizando o dispositivo
-"Myo-armband" desenvolvido pela empresa Thalmic Labs, conuntamente com uma webcam de computador/notebook comum.
+"Myo-armband" desenvolvido pela empresa Thalmic Labs, conjuntamente com uma webcam de computador/notebook comum.
 
 Agradecimento especial à dzhu que com seu projeto ajudou na comunicação com o dispositivo "Myo":
 https://github.com/dzhu/myo-raw
