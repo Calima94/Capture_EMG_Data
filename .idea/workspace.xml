@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="98676a59-49eb-45ed-9ce0-f79d060bd736" name="Changes" comment="20/06/2022 - 3" />
+    <list default="true" id="98676a59-49eb-45ed-9ce0-f79d060bd736" name="Changes" comment="20/06/2022 - 4" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -112,7 +112,21 @@
       <option name="project" value="LOCAL" />
       <updated>1655738974084</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="20/06/2022 - 4">
+      <created>1655739641746</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1655739641746</updated>
+    </task>
+    <task id="LOCAL-00008" summary="20/06/2022 - 4">
+      <created>1655739714453</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1655739714453</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -132,6 +146,7 @@
     <MESSAGE value="19/06/2022" />
     <MESSAGE value="19/06/2022 - 2" />
     <MESSAGE value="20/06/2022 - 3" />
-    <option name="LAST_COMMIT_MESSAGE" value="20/06/2022 - 3" />
+    <MESSAGE value="20/06/2022 - 4" />
+    <option name="LAST_COMMIT_MESSAGE" value="20/06/2022 - 4" />
   </component>
 </project>
