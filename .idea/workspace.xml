@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="98676a59-49eb-45ed-9ce0-f79d060bd736" name="Changes" comment="19/06/2022 - 2" />
+    <list default="true" id="98676a59-49eb-45ed-9ce0-f79d060bd736" name="Changes" comment="20/06/2022 - 3" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -105,7 +105,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655738833855</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="20/06/2022 - 3">
+      <created>1655738974084</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1655738974084</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -124,6 +131,7 @@
     <MESSAGE value="Requirements_2" />
     <MESSAGE value="19/06/2022" />
     <MESSAGE value="19/06/2022 - 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="19/06/2022 - 2" />
+    <MESSAGE value="20/06/2022 - 3" />
+    <option name="LAST_COMMIT_MESSAGE" value="20/06/2022 - 3" />
   </component>
 </project>
