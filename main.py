@@ -12,6 +12,7 @@ import sys
 import threading
 import pandas as pd
 import serial
+import os
 
 ###################################################################################
 # Global Variables
@@ -21,8 +22,8 @@ Emg_total = []
 end_of_training = False
 write_EMG_signals = False
 
-list_of_angles = [180, 165, 150, 135, 120, 105, 90, 75, 60, 45]
-
+# list_of_angles = [170, 90, 165, 150, 135, 120, 105, 75, 60, 45]
+list_of_angles = [170, 90, 110, 80, 50]
 ##############################################################################################
 # Myo Modules
 
@@ -88,8 +89,12 @@ class BT(object):
             if not c:
                 return None
 
+# https://stackoverflow.com/questions/44113726/receiving-data-from-myo-stops-after-a-while
             ret = self.proc_byte(ord(c))
             if ret:
+                n = self.ser.inWaiting()
+                if n >= 100:
+                    self.ser.flushInput()
                 if ret.typ == 0x80:
                     self.handle_event(ret)
                 return ret
@@ -261,8 +266,10 @@ class MyoRaw(object):
             global Emg_total
             global first_time
             global actual_angle
+            #print(f"p.cls={p.cls} p.cmd={p.cmd}")
 
             if (p.cls, p.cmd) != (4, 5):
+                #print("problem")
                 return
 
             c, attr, typ = unpack('BHB', p.payload[:4])
@@ -279,12 +286,16 @@ class MyoRaw(object):
                 list_emg = list(emg)
                 now_ = time.time()
                 tempo = now_ - first_time
+                #print(len(list_emg))
+
 
                 if write_EMG_signals:
                     if len(list_emg) == 8:
                         list_emg.insert(0, tempo)
                         list_emg.insert(9, actual_angle)
                         Emg_total.append(list_emg)
+                        #print("hello")
+
 
             elif attr == 0x1c:
                 vals = unpack('10h', pay)
@@ -593,6 +604,27 @@ def main(args=None):
     sys.exit(app.exec())
 
 
+def return_name_file(file_name):
+    u = 0
+    while os.path.exists(f"{file_name}{u}.csv"):
+        u += 1
+    new_name = f"{file_name}{u}.csv"
+    return new_name
+
+
+def name_columns_of_table(n_columns):
+    columns_name = None
+    for i in range(n_columns):
+        if columns_name is None:
+            columns_name = ["time"]
+        else:
+            if i < n_columns - 1:
+                columns_name.append(f"chanel{i}")
+            else:
+                columns_name.append("position")
+    return columns_name
+
+
 def write_file(args=None):
     global write_EMG_signals
     global Emg_total
@@ -603,13 +635,16 @@ def write_file(args=None):
     m.connect()
     try:
         while True:
-            m.run(1)
-            print(len(Emg_total))
+            m.run(1000)
             if end_of_training:
                 df = pd.DataFrame(Emg_total)
-                df.columns = ['time', 'chanel1', 'chanel2', 'chanel3', 'chanel4', 'chanel5', 'chanel6', 'chanel7',
-                              'chanel8', 'position']
-                df.to_csv("EMG_Data/train_with_openCV_list_16_05.csv")
+                n_columns = len(Emg_total[0])
+                name_of_columns = name_columns_of_table(n_columns=n_columns)
+                # df.columns = ['time', 'chanel1', 'chanel2', 'chanel3', 'chanel4', 'chanel5', 'chanel6', 'chanel7',
+                #              'chanel8', 'position']
+                df.columns = name_of_columns
+                name_ = return_name_file("EMG_Data/train_with_openCV_list_16_05")
+                df.to_csv(name_)
                 Emg_total = []
                 break
     except KeyboardInterrupt:

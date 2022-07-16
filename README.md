@@ -1,5 +1,22 @@
 # Capture_EMG_Data
 
+## Sobre o projeto
+
+Este projeto foi desenvolvido de forma a facilitar a captura de categorias pré-definidas do ângulo de cotovelo pelo usuário, utilizando o dispositivo
+"Myo-armband" desenvolvido pela empresa Thalmic Labs, conjuntamente com uma webcam de computador/notebook comum.
+
+Agradecimento especial à dzhu que com seu projeto ajudou na comunicação com o dispositivo "Myo":
+https://github.com/dzhu/myo-raw
+
+Agradecimento especial também a Alvipe devido as implementações feitas adicionais ao projeto de dzhu, que foram incorporadas ao projeto:
+https://github.com/Alvipe/myo-raw
+
+E finalmente a Fernando Cossentino que utilizando a partir do código de dzhu fez modificações que foram utilizadas neste projeto.
+http://www.fernandocosentino.net/pyoconnect/ (acessado em 20/06/2022)
+
+Para acessar a versão base deste projeto sem o módulo de leitura de sinais EMG acesse o github de Alan Mendes (alans96):
+https://github.com/alans96/arm_robotics
+
 ## Modo de Utilização
 
 Execute o arquivo main.py enquanto usa o bracelete "Myo" com o adaptador "bluetooth" conectado em uma porta USB de seu computador.
@@ -20,11 +37,11 @@ Após ser capturado uma das categorias com a quantidade de amostras especificada
 
 Após todas as categorias serem treinadas a janela de exibição da captura das amostras se encerará e o programa salvará automaticamente.
 
-* Selecionando 2 categorias o algoritmo identificará (180° como categoria 1 e 90° como categoria 2)
+*Selecionando 2 categorias o algoritmo identificará (180° como categoria 1 e 90° como categoria 2)
 
-** Selecionando 3 categorias o algoritmo identificará (180° como categoria 1 e 90° como categoria 2, 60° como categoria 3)
+**Selecionando 3 categorias o algoritmo identificará (180° como categoria 1 e 90° como categoria 2, 60° como categoria 3)
 
-*** Selecionando 4 categorias o algoritmo identificará (180° como categoria 1 e 90° como categoria 2, 60° como categoria 3, 45° como categoria 4)
+***Selecionando 4 categorias o algoritmo identificará (180° como categoria 1 e 90° como categoria 2, 60° como categoria 3, 45° como categoria 4)
 
 
 ## Requisitos e cuidados na execução do programa
