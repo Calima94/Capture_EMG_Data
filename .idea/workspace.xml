@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="98676a59-49eb-45ed-9ce0-f79d060bd736" name="Changes" comment="16/07/2022">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EMG_Data/train_with_openCV_list_16_05.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Videos/test_2_05.avi" beforeDir="false" afterPath="$PROJECT_DIR$/Videos/test_2_05.avi" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myo-raw" beforeDir="false" afterPath="$PROJECT_DIR$/myo-raw" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myo-raw/myo_raw.py" beforeDir="false" afterPath="$PROJECT_DIR$/myo-raw/myo_raw.py" afterDir="false" />
-    </list>
+    <list default="true" id="98676a59-49eb-45ed-9ce0-f79d060bd736" name="Changes" comment="19/09/2022 - resolve big data acquisition in myo" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,6 +20,13 @@
   <component name="Git.Settings">
     <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubProjectSettings">
+    <option name="branchProtectionPatterns">
+      <list>
+        <option value="master" />
+      </list>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -291,7 +291,21 @@
       <option name="project" value="LOCAL" />
       <updated>1657992818293</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="19/09/2022 - resolve big data acquisition in myo">
+      <created>1663605681761</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1663605681761</updated>
+    </task>
+    <task id="LOCAL-00013" summary="19/09/2022 - resolve big data acquisition in myo">
+      <created>1663605688031</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1663605688031</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -314,6 +328,7 @@
     <MESSAGE value="20/06/2022 - 4" />
     <MESSAGE value="20/06/2022 - 5" />
     <MESSAGE value="16/07/2022" />
-    <option name="LAST_COMMIT_MESSAGE" value="16/07/2022" />
+    <MESSAGE value="19/09/2022 - resolve big data acquisition in myo" />
+    <option name="LAST_COMMIT_MESSAGE" value="19/09/2022 - resolve big data acquisition in myo" />
   </component>
 </project>
