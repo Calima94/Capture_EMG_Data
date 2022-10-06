@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="98676a59-49eb-45ed-9ce0-f79d060bd736" name="Changes" comment="19/09/2022 - resolve big data acquisition in myo" />
+    <list default="true" id="98676a59-49eb-45ed-9ce0-f79d060bd736" name="Changes" comment="19/09/2022 - resolve big data acquisition in myo_2">
+      <change afterPath="$PROJECT_DIR$/main_2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/csv-plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/csv-plugin.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Videos/test_2_05.avi" beforeDir="false" afterPath="$PROJECT_DIR$/Videos/test_2_05.avi" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,11 +49,16 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "/home/caio/Train_Myo_Signals",
+    "last_opened_file_path": "/home/caio/Captura_de_Sinais_EMG/main_2.py",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.main_2">
     <configuration name="game1" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="Captura_de_Sinais_EMG" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -82,6 +93,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main_2" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="Captura_de_Sinais_EMG" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main_2.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -197,6 +229,7 @@
     </configuration>
     <list>
       <item itemvalue="Python.game1" />
+      <item itemvalue="Python.main_2" />
       <item itemvalue="Python.main" />
       <item itemvalue="Python.myo" />
       <item itemvalue="Python.myo_raw" />
@@ -305,7 +338,14 @@
       <option name="project" value="LOCAL" />
       <updated>1663605688031</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="19/09/2022 - resolve big data acquisition in myo_2">
+      <created>1663616265879</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1663616265879</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -329,6 +369,7 @@
     <MESSAGE value="20/06/2022 - 5" />
     <MESSAGE value="16/07/2022" />
     <MESSAGE value="19/09/2022 - resolve big data acquisition in myo" />
-    <option name="LAST_COMMIT_MESSAGE" value="19/09/2022 - resolve big data acquisition in myo" />
+    <MESSAGE value="19/09/2022 - resolve big data acquisition in myo_2" />
+    <option name="LAST_COMMIT_MESSAGE" value="19/09/2022 - resolve big data acquisition in myo_2" />
   </component>
 </project>

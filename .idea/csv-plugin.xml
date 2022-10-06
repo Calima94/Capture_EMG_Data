@@ -3,6 +3,13 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
+        <entry key="/EMG_Data/6_10_20220.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="/EMG_Data/train_with_openCV_list_16_051.csv">
           <value>
             <Attribute>
@@ -18,6 +25,27 @@
           </value>
         </entry>
         <entry key="/EMG_Data/train_with_openCV_list_16_054.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/EMG_Data/train_with_openCV_list_16_056.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/teste1.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/teste_1.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
