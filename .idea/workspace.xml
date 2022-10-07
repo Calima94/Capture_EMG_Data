@@ -360,7 +360,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665181521088</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="07/10/2022 - rename_files">
+      <created>1665186898690</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1665186898690</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -387,6 +394,7 @@
     <MESSAGE value="19/09/2022 - resolve big data acquisition in myo_2" />
     <MESSAGE value="06/10/2022 - new_tax_rate_capture" />
     <MESSAGE value="07/10/2022 - adjust" />
+    <MESSAGE value="07/10/2022 - rename_files_2" />
     <MESSAGE value="07/10/2022 - rename_files" />
     <option name="LAST_COMMIT_MESSAGE" value="07/10/2022 - rename_files" />
   </component>
