@@ -3,6 +3,7 @@ from serial.tools.list_ports import comports
 from common import *
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from ui_main_window import Ui_MainWindow
+from datetime import date
 import time
 import cv2
 import numpy as np
@@ -26,12 +27,10 @@ problem_ = False
 saved_data = True
 end_ = False
 
-
 # list_of_angles = [170, 90, 165, 150, 135, 120, 105, 75, 60, 45]
 list_of_angles = [170, 90]
 ##############################################################################################
 # Myo Modules
-
 
 
 ##########################################################################################################
@@ -91,12 +90,13 @@ class Packet(object):
 
     def __repr__(self):
         return 'Packet(%02X, %02X, %02X, [%s])' % \
-            (self.typ, self.cls, self.cmd,
-             ' '.join('%02X' % b for b in multiord(self.payload)))
+               (self.typ, self.cls, self.cmd,
+                ' '.join('%02X' % b for b in multiord(self.payload)))
 
 
 class BT(object):
     '''Implements the non-Myo-specific details of the Bluetooth protocol.'''
+
     def __init__(self, tty):
         self.ser = serial.Serial(port=tty, baudrate=9600, dsrdtr=1)
         self.buf = []
@@ -167,6 +167,7 @@ class BT(object):
         def h(p):
             if p.cls == cls and p.cmd == cmd:
                 res[0] = p
+
         self.add_handler(h)
         while res[0] is None:
             self.recv_packet()
@@ -211,7 +212,9 @@ class BT(object):
 
 
 class MyoRaw(object):
-    '''Implements the Myo-specific communication protocol.'''
+    """
+    Implements the Myo-specific communication protocol.
+    """
 
     def __init__(self, tty=None):
         if tty is None:
@@ -332,7 +335,7 @@ class MyoRaw(object):
             # Read notification handles corresponding to the for EMG characteristics
             elif attr == 0x2b or attr == 0x2e or attr == 0x31 or attr == 0x34:
                 '''According to http://developerblog.myo.com/myocraft-emg-in-the-bluetooth-protocol/
-                each characteristic sends two secuential readings in each update,
+                each characteristic sends two sequential readings in each update,
                 so the received payload is split in two samples. According to the
                 Myo BLE specification, the data type of the EMG samples is int8_t.
                 '''
@@ -437,15 +440,19 @@ class MyoRaw(object):
         self.write_attr(0x28, b'\x01\x00')  # Suscribe to EMG notifications
         self.write_attr(0x1d, b'\x01\x00')  # Suscribe to IMU notifications
         self.write_attr(0x24, b'\x02\x00')  # Suscribe to classifier indications
-        self.write_attr(0x19, b'\x01\x03\x01\x01\x01')  # Set EMG and IMU, payload size = 3, EMG on, IMU on, classifier on
+        self.write_attr(0x19,
+                        b'\x01\x03\x01\x01\x01')  # Set EMG and IMU, payload size = 3, EMG on, IMU on, classifier on
         self.write_attr(0x28, b'\x01\x00')  # Suscribe to EMG notifications
         self.write_attr(0x1d, b'\x01\x00')  # Suscribe to IMU notifications
-        self.write_attr(0x19, b'\x09\x01\x01\x00\x00')  # Set sleep mode, payload size = 1, never go to sleep, don't know, don't know
+        self.write_attr(0x19,
+                        b'\x09\x01\x01\x00\x00')  # Set sleep mode, payload size = 1, never go to sleep, don't know, don't know
         self.write_attr(0x1d, b'\x01\x00')  # Suscribe to IMU notifications
-        self.write_attr(0x19, b'\x01\x03\x00\x01\x00')  # Set EMG and IMU, payload size = 3, EMG off, IMU on, classifier off
+        self.write_attr(0x19,
+                        b'\x01\x03\x00\x01\x00')  # Set EMG and IMU, payload size = 3, EMG off, IMU on, classifier off
         self.write_attr(0x28, b'\x01\x00')  # Suscribe to EMG notifications
         self.write_attr(0x1d, b'\x01\x00')  # Suscribe to IMU notifications
-        self.write_attr(0x19, b'\x01\x03\x01\x01\x00')  # Set EMG and IMU, payload size = 3, EMG on, IMU on, classifier off
+        self.write_attr(0x19,
+                        b'\x01\x03\x01\x01\x00')  # Set EMG and IMU, payload size = 3, EMG on, IMU on, classifier off
 
     def mc_end_collection(self):
         '''Myo Connect sends this sequence (or a reordering) when ending data collection
@@ -467,8 +474,8 @@ class MyoRaw(object):
         self.write_attr(0x19, b'\x01\x03\x01\x01\x01')
 
     def vibrate(self, length):
-            # first byte tells it to vibrate; purpose of second byte is unknown (payload size?)
-            self.write_attr(0x19, pack('3B', 3, 1, length))
+        # first byte tells it to vibrate; purpose of second byte is unknown (payload size?)
+        self.write_attr(0x19, pack('3B', 3, 1, length))
 
     def set_leds(self, logo, line):
         self.write_attr(0x19, pack('8B', 6, 6, *(logo + line)))
@@ -511,9 +518,6 @@ class MyoRaw(object):
     def on_battery(self, battery_level):
         for h in self.battery_handlers:
             h(battery_level)
-
-
-
 
 
 ##########################################################################################
@@ -695,7 +699,15 @@ def main(args=None):
     sys.exit(app.exec())
 
 
-def return_name_file(file_name):
+def return_name_file(file_name: str) -> str:
+    """
+    Return new name of file if the name chosen already existed
+
+    input:
+    param_ file_name: Name of the file -> str
+    return:
+    new_name: New name of the file
+    """
     u = 0
     while os.path.exists(f"{file_name}{u}.csv"):
         u += 1
@@ -703,7 +715,17 @@ def return_name_file(file_name):
     return new_name
 
 
-def name_columns_of_table(n_columns):
+def name_columns_of_table(n_columns: int):
+    """
+    Return name of columns of each column in the EMG data
+
+    input:
+    Name of the file -> int
+
+    return:
+    columns_name: names of each column stored in a vector
+
+    """
     columns_name = None
     for i in range(n_columns):
         if columns_name is None:
@@ -727,13 +749,23 @@ def write_file(args=None):
     end_of_training = False
     write_EMG_signals = False
 
-# Start new program here
-########################################################################################
+    # Start new program here
+    ########################################################################################
 
     last_vals = None
     m = MyoRaw(None)
 
-    def return_name_file(file_name):
+    def return_name_file(file_name: str) -> str:
+        """
+        return new name of the file if the names already exists
+
+        input:
+        file_name: str -> name of the file
+
+        return:
+        new_name: str -> name of new file
+
+        """
         u = 0
         new_name = f"{file_name}{u}.csv"
         while os.path.exists(f"{file_name}{u}.csv"):
@@ -741,7 +773,17 @@ def write_file(args=None):
             new_name = f"{file_name}{u}.csv"
         return new_name
 
-    def name_columns_of_table(n_columns):
+    def name_columns_of_table(n_columns: int):
+        """
+        Name of columns of the database
+
+        input:
+        n_of_columns: int -> number of the columns of the database
+
+        output:
+        columns_name: name of columns save in a vector
+
+        """
         columns_name = None
         for i in range(n_columns):
             if columns_name is None:
@@ -754,6 +796,9 @@ def write_file(args=None):
         return columns_name
 
     def proc_emg(emg, moving, times=[]):
+        """
+        Function to save EMG data if the signal is in the correct category
+        """
 
         emg_list_ = list(emg)
         if write_EMG_signals:
@@ -763,9 +808,6 @@ def write_file(args=None):
                 emg_list_.insert(0, diff_time)
                 emg_list_.insert(9, actual_angle)
                 Emg_total.append(emg_list_)
-
-
-
 
             # print framerate of received data
             # times.append(time.time())
@@ -781,15 +823,15 @@ def write_file(args=None):
             m.set_leds([128, 128, 255], [128, 128, 255])
 
     m.add_emg_handler(proc_emg)
-    #m.add_battery_handler(proc_battery)
+    # m.add_battery_handler(proc_battery)
     m.connect()
 
-    #m.add_arm_handler(lambda arm, xdir: print('arm', arm, 'xdir', xdir))
-        # m.add_pose_handler(lambda p: print('pose', p))
-        # m.add_imu_handler(lambda quat, acc, gyro: print('quaternion', quat))
-    #m.sleep_mode(1)
-    #m.set_leds([128, 128, 255], [128, 128, 255])  # purple logo and bar LEDs
-    #m.vibrate(1)
+    # m.add_arm_handler(lambda arm, xdir: print('arm', arm, 'xdir', xdir))
+    # m.add_pose_handler(lambda p: print('pose', p))
+    # m.add_imu_handler(lambda quat, acc, gyro: print('quaternion', quat))
+    # m.sleep_mode(1)
+    # m.set_leds([128, 128, 255], [128, 128, 255])  # purple logo and bar LEDs
+    # m.vibrate(1)
 
     try:
         while True:
@@ -800,8 +842,9 @@ def write_file(args=None):
                 n_columns = len(Emg_total[0])
                 name_of_columns = name_columns_of_table(n_columns=n_columns)
                 df.columns = name_of_columns
-                name_ = return_name_file("EMG_Data/6_10_2022")
-                name_2 = return_name_file("../Train_Myo_Signals/Raw_EMG_Data/6_10_2022")
+                today = str(date.today())
+                name_ = return_name_file(f"EMG_Data/test_{today}")
+                name_2 = return_name_file(f"../Train_Myo_Signals/Raw_EMG_Data/test_{today}")
                 df.to_csv(name_, index=False)
                 df.to_csv(name_2, index=False)
                 print("end")
@@ -811,8 +854,8 @@ def write_file(args=None):
     except KeyboardInterrupt:
         pass
     finally:
-            # m.power_off()
-            # print("Power off")
+        # m.power_off()
+        # print("Power off")
         m.disconnect()
         print("Disconnected")
 
