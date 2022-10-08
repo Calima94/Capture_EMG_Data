@@ -19,7 +19,7 @@ https://github.com/alans96/arm_robotics
 
 ## Modo de Utilização
 
-Execute o arquivo main.py enquanto usa o bracelete "Myo" com o adaptador "bluetooth" conectado em uma porta USB de seu computador.
+Execute o arquivo capture_myo_filtered_signal_50hz.py, para capturar os sinais filtrados pelo aparelho Myo a uma taxa de 50Hz, ou execute o arquivo   usando o bracelete "Myo" com o adaptador "bluetooth" conectado em uma porta USB de seu computador.
 
 Na aba "Funções" selecione o braço em que se está realizando as capturas dos sinais EMG.
 
