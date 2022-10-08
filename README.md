@@ -19,7 +19,7 @@ https://github.com/alans96/arm_robotics
 
 ## Modo de Utilização
 
-Execute o arquivo main.py enquanto usa o bracelete "Myo" com o adaptador "bluetooth" conectado em uma porta USB de seu computador.
+Execute o arquivo capture_myo_filtered_signal_50hz.py, para capturar os sinais filtrados pelo aparelho Myo a uma taxa de 50Hz, ou execute o arquivo capture_myo_not_filtered_signal_200hz.py, em ambos os casos usando o bracelete "Myo" com o adaptador "bluetooth" (de origem do aparelho) conectado em uma porta USB de seu computador.
 
 Na aba "Funções" selecione o braço em que se está realizando as capturas dos sinais EMG.
 
@@ -37,11 +37,11 @@ Após ser capturado uma das categorias com a quantidade de amostras especificada
 
 Após todas as categorias serem treinadas a janela de exibição da captura das amostras se encerará e o programa salvará automaticamente.
 
-*Selecionando 2 categorias o algoritmo identificará (180° como categoria 1 e 90° como categoria 2)
+*Selecionando 2 categorias o algoritmo identificará (170° como categoria 1 e 90° como categoria 2)
 
-**Selecionando 3 categorias o algoritmo identificará (180° como categoria 1 e 90° como categoria 2, 60° como categoria 3)
+**Selecionando 3 categorias o algoritmo identificará (170° como categoria 1 e 90° como categoria 2, 60° como categoria 3)
 
-***Selecionando 4 categorias o algoritmo identificará (180° como categoria 1 e 90° como categoria 2, 60° como categoria 3, 45° como categoria 4)
+***Selecionando 4 categorias o algoritmo identificará (170° como categoria 1 e 90° como categoria 2, 60° como categoria 3, 45° como categoria 4)
 
 
 ## Requisitos e cuidados na execução do programa
