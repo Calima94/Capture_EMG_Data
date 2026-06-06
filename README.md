@@ -1,66 +1,121 @@
 # Capture_EMG_Data
 
-## Sobre o projeto
+Acquisition tool for labeled surface EMG (sEMG) data using the **Myo armband** and an ordinary webcam.
+The program records pre-defined elbow-angle categories, pairing each sEMG sample window with a
+vision-based angle label, and exports the result to CSV for downstream gesture/posture classification.
 
-Este projeto foi desenvolvido de forma a facilitar a captura de categorias pré-definidas do ângulo de cotovelo pelo usuário, utilizando o dispositivo
-"Myo-armband" desenvolvido pela empresa Thalmic Labs, conjuntamente com uma webcam de computador/notebook comum.
+> Coleta de dados de sEMG rotulados com o bracelete **Myo** e uma webcam comum. O programa grava
+> categorias pré-definidas de ângulo de cotovelo, associando cada janela de sinal a um rótulo de ângulo
+> obtido por visão computacional, e exporta tudo em CSV para classificação posterior.
 
-Agradecimento especial à dzhu que com seu projeto ajudou na comunicação com o dispositivo "Myo":
-https://github.com/dzhu/myo-raw
+---
 
-Agradecimento especial também a Alvipe devido as implementações feitas adicionais ao projeto de dzhu, que foram incorporadas ao projeto:
-https://github.com/Alvipe/myo-raw
+## Suggested repository metadata
 
-E finalmente a Fernando Cossentino que utilizando a partir do código de dzhu fez modificações que foram utilizadas neste projeto.
-http://www.fernandocosentino.net/pyoconnect/ (acessado em 20/06/2022)
+Set these on GitHub (the "About" gear, top-right of the repo page) — they are the single biggest lever for discoverability:
 
-Para acessar a versão base deste projeto sem o módulo de leitura de sinais EMG acesse o github de Alan Mendes (alans96):
-https://github.com/alans96/arm_robotics
+- **Description:** `Labeled sEMG data acquisition from the Myo armband + webcam, with a PyQt5 GUI. Exports elbow-angle categories to CSV.`
+- **Topics:** `emg` `semg` `myo-armband` `data-acquisition` `gesture-recognition` `pyqt5` `opencv` `python` `biosignals` `human-machine-interface`
 
-## Modo de Utilização
+---
 
-Execute o arquivo capture_myo_filtered_signal_50hz.py, para capturar os sinais filtrados pelo aparelho Myo a uma taxa de 50Hz, ou execute o arquivo capture_myo_not_filtered_signal_200hz.py, em ambos os casos usando o bracelete "Myo" com o adaptador "bluetooth" (de origem do aparelho) conectado em uma porta USB de seu computador.
+## Features
 
-Na aba "Funções" selecione o braço em que se está realizando as capturas dos sinais EMG.
+- Real-time sEMG capture from the Myo armband (8 channels).
+- Two acquisition modes:
+  - **Filtered, ~50 Hz** — `capture_myo_filtered_signal_50hz.py`
+  - **Raw, ~200 Hz** — `capture_myo_not_filtered_signal_200hz.py`
+- PyQt5 graphical interface for configuring and running a session.
+- Webcam-based elbow-angle estimation used to label each capture.
+- Configurable number of categories (2–4) with an adjustable angle tolerance per category.
+- Automatic CSV export at the end of a session.
 
-Em seguida digite a quantidade de amostras por categoria que você deseja capturar (O "Myo" faz aproximadamente 200 capturas por segundo)
+## How it works
 
-Logo após selecione o número de categorias que você deseja classificar, conjuntamente com a variância de ângulo que será aceito para um ângulo
+Through the GUI you:
 
-ser pertencente a determinada categoria. (Evite o uso de variâncias que sobrepunham as categorias, elas podem causar erros nas classificações futuras)* ** ***.
+1. Select the arm being measured.
+2. Set the number of samples per category (the Myo streams ~200 samples/s).
+3. Choose the number of categories (2–4) and the angle variance accepted for a sample to belong to a category.
+   Avoid overlapping ranges — they cause label noise.
+4. Press **Start**.
 
-Click no botão Start.
+While an angle is being captured, the on-screen arm overlay turns **orange**; once a category reaches its
+target sample count, it turns **green**. When all categories are filled, the capture window closes and the
+data is saved automatically.
 
-Quando o ângulo estiver sendo capturado as linhas do braço do utilizador ficará laranja.
+Default angle-to-category mapping:
 
-Após ser capturado uma das categorias com a quantidade de amostras especificadas elas apareceram em verde.
+| Categories | Mapping |
+|------------|---------|
+| 2 | 170° → cat 1, 90° → cat 2 |
+| 3 | 170° → cat 1, 90° → cat 2, 60° → cat 3 |
+| 4 | 170° → cat 1, 90° → cat 2, 60° → cat 3, 45° → cat 4 |
 
-Após todas as categorias serem treinadas a janela de exibição da captura das amostras se encerará e o programa salvará automaticamente.
+## Requirements
 
-*Selecionando 2 categorias o algoritmo identificará (170° como categoria 1 e 90° como categoria 2)
+- Tested on **Linux (Ubuntu 20.04)**.
+- Myo armband with its original Bluetooth USB adapter connected to a USB port.
+- Python dependencies are listed in [`requirements.txt`](requirements.txt).
 
-**Selecionando 3 categorias o algoritmo identificará (170° como categoria 1 e 90° como categoria 2, 60° como categoria 3)
+Install:
 
-***Selecionando 4 categorias o algoritmo identificará (170° como categoria 1 e 90° como categoria 2, 60° como categoria 3, 45° como categoria 4)
+```bash
+pip3 install -r requirements.txt
+```
 
+### Troubleshooting
 
-## Requisitos e cuidados na execução do programa
+- **PyQt5 / `xcb` platform plugin error** (often an OpenCV ↔ PyQt5 conflict):
+  ```bash
+  pip3 install PyQt5==5.11.3
+  ```
+  Reference: https://stackoverflow.com/questions/63829991/qt-qpa-plugin-could-not-load-the-qt-platform-plugin-xcb-in-even-though-it
+- **`cv2` import problems:**
+  ```bash
+  pip install opencv-contrib-python  # works on both Windows and Ubuntu
+  ```
+  Reference: https://stackoverflow.com/questions/37776228/pycharm-python-opencv-and-cv2-install-error
 
-Este sistema foi testado para sistemas Linux (Especificamente o Ubuntu 20.04)
+## Usage
 
-Para a correta utilização deste programa veja os requisitos do projeto descrito no arquivo "requirements.txt"
+```bash
+# filtered signal at ~50 Hz
+python3 capture_myo_filtered_signal_50hz.py
 
-Caso haja problemas com o arquivo o PyQt5, especificamente com o arquivo "xbc", pode ser problemas de compatibilidade do OpenCv com o PyQt5, desta forma
-procure o artigo no "StackOverflow" abaixo pode ajudar.
+# raw signal at ~200 Hz
+python3 capture_myo_not_filtered_signal_200hz.py
+```
 
-https://stackoverflow.com/questions/63829991/qt-qpa-plugin-could-not-load-the-qt-platform-plugin-xcb-in-even-though-it
+Captured datasets are written to the `EMG_Data/` directory as CSV files.
 
-Utilizando o comando:
-(pip3 install PyQt5==5.11.3)
+## Repository layout
 
-Caso também haja problemas com a importação do arquivo cv2, o artigo do "StackOverflow" também pode ajudar.
+| Path | Purpose |
+|------|---------|
+| `capture_myo_filtered_signal_50hz.py` | Capture session, filtered signal (~50 Hz) |
+| `capture_myo_not_filtered_signal_200hz.py` | Capture session, raw signal (~200 Hz) |
+| `pose_module.py` | Webcam-based pose/angle estimation |
+| `common.py` | Shared helpers |
+| `ui_main_window.py`, `ui_main_window.ui` | PyQt5 interface |
+| `turn_off.py` | Utility to power down / disconnect the Myo |
+| `EMG_Data/` | Output datasets |
+| `libmyolinux/`, `myo-python/`, `myo-raw/` | Myo communication backends |
 
-https://stackoverflow.com/questions/37776228/pycharm-python-opencv-and-cv2-install-error
+## Acknowledgments
 
-!pip install opencv-contrib-python    #working on both Windows and Ubuntu
+This project builds on the work of several people who made Myo communication on Linux possible:
 
+- **dzhu** — `myo-raw`, the base library for communicating with the Myo: https://github.com/dzhu/myo-raw
+- **Alvipe** — additional improvements to `myo-raw`, incorporated here: https://github.com/Alvipe/myo-raw
+- **Fernando Cossentino** — PyoConnect, modifications used in this project: http://www.fernandocosentino.net/pyoconnect/ (accessed 2022-06-20)
+- **Alan Mendes (alans96)** — base version of the project without the EMG-reading module: https://github.com/alans96/arm_robotics
+
+## License
+
+Released under the **Apache-2.0 License**. See [`LICENSE`](LICENSE).
+
+## Author
+
+**Caio Lima** — UFABC
+[GitHub](https://github.com/Calima94) · [LinkedIn](https://www.linkedin.com/in/caio-lima-9035a022a/) · [ResearchGate](https://www.researchgate.net/profile/Caio-Lima-15) · [Lattes](http://lattes.cnpq.br/0127370029893676)
